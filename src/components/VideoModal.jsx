@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Play, Clock, Film, Award, ShieldCheck, Tag, ExternalLink } from 'lucide-react';
+import { X, Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const VideoModal = ({ project, onClose }) => {
@@ -8,23 +8,24 @@ export const VideoModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-charcoal-950/90 backdrop-blur-xl animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#080A0D]/90 backdrop-blur-md animate-fadeIn">
       {/* Backdrop */}
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-4xl bg-charcoal-900 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl z-10 max-h-[92vh] flex flex-col">
-        {/* Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-charcoal-950/50">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-wider text-gold font-semibold">
-              {project.category.toUpperCase()} • {project.year}
+      <div className="relative w-full max-w-4xl bg-[#111419] border border-white/15 overflow-hidden z-10 max-h-[92vh] flex flex-col shadow-2xl">
+        
+        {/* Top Header Bar */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#080A0D]">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-accentBlue" />
+            <span className="font-mono text-xs uppercase tracking-widest text-mutedText">
+              {project.category} • {project.year}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-charcoal-800 text-slateText hover:text-white hover:bg-charcoal-700 transition-colors"
+            className="p-1.5 text-mutedText hover:text-white transition-colors"
             aria-label="Close video player"
           >
             <X className="w-5 h-5" />
@@ -32,10 +33,9 @@ export const VideoModal = ({ project, onClose }) => {
         </div>
 
         {/* Scrollable Container */}
-        <div className="overflow-y-auto p-4 sm:p-6 space-y-6">
-          {/* Responsive Video Container (16:9 / 2.39:1) */}
-          <div className="relative w-full rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 shadow-2xl">
-            {/* If project has an embed URL, display iframe, else poster with play indicator */}
+        <div className="overflow-y-auto p-6 space-y-6">
+          {/* Responsive Video Container (16:9) */}
+          <div className="relative w-full aspect-video bg-black border border-white/10">
             {project.videoUrl ? (
               <iframe
                 src={`${project.videoUrl}?autoplay=1&rel=0&modestbranding=1`}
@@ -52,8 +52,8 @@ export const VideoModal = ({ project, onClose }) => {
                   className="w-full h-full object-cover opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <div className="w-16 h-16 rounded-full bg-gold/90 text-charcoal-950 flex items-center justify-center shadow-glow-gold">
-                    <Play className="w-7 h-7 ml-1" />
+                  <div className="w-14 h-14 rounded-full border border-white/30 bg-[#080A0D]/80 flex items-center justify-center text-white">
+                    <Play className="w-5 h-5 ml-0.5 fill-current text-accentBlue" />
                   </div>
                 </div>
               </div>
@@ -63,55 +63,61 @@ export const VideoModal = ({ project, onClose }) => {
           {/* Project Details */}
           <div>
             <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-              <h2 className="text-2xl sm:text-3xl font-sans font-bold text-cream">
+              <h2 className="text-xl sm:text-2xl font-sans font-bold text-white uppercase tracking-tight">
                 {project.title[language]}
               </h2>
-              <span className="px-3.5 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-mono font-medium">
+              <span className="text-xs font-mono text-accentBlue border border-accentBlue/30 px-2.5 py-1">
                 {project.role[language]}
               </span>
             </div>
 
-            <p className="text-slateText text-sm sm:text-base leading-relaxed mb-6">
+            <p className="text-mutedText text-xs sm:text-sm leading-relaxed mb-6">
               {project.description[language]}
             </p>
 
-            {/* Production Specifications Bento Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-charcoal-850 border border-white/5 text-xs">
+            {/* Production Specifications */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#080A0D] border border-white/5 text-xs font-mono">
               <div>
-                <span className="block text-slate-500 font-mono mb-1">{t.portfolio.clientLabel}</span>
-                <span className="font-semibold text-white">{project.client}</span>
+                <span className="block text-mutedText/60 text-[10px] uppercase mb-1">
+                  {t.portfolio.clientLabel}
+                </span>
+                <span className="text-white">{project.client}</span>
               </div>
               <div>
-                <span className="block text-slate-500 font-mono mb-1">{t.portfolio.prodLabel}</span>
-                <span className="font-semibold text-white">{project.productionCompany}</span>
+                <span className="block text-mutedText/60 text-[10px] uppercase mb-1">
+                  {t.portfolio.prodLabel}
+                </span>
+                <span className="text-white">{project.productionCompany}</span>
               </div>
               <div>
-                <span className="block text-slate-500 font-mono mb-1">{t.portfolio.durationLabel}</span>
-                <span className="font-semibold text-white">{project.duration}</span>
+                <span className="block text-mutedText/60 text-[10px] uppercase mb-1">
+                  {t.portfolio.durationLabel}
+                </span>
+                <span className="text-white">{project.duration}</span>
               </div>
               <div>
-                <span className="block text-slate-500 font-mono mb-1">{t.portfolio.aspectLabel}</span>
-                <span className="font-semibold text-white">{project.aspectRatio}</span>
+                <span className="block text-mutedText/60 text-[10px] uppercase mb-1">
+                  {t.portfolio.aspectLabel}
+                </span>
+                <span className="text-white">{project.aspectRatio}</span>
               </div>
             </div>
 
             {/* Tags */}
             {project.tags && project.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="flex flex-wrap gap-2 mt-4 text-[10px] font-mono text-mutedText">
                 {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 rounded-lg bg-charcoal-800 text-slateText text-[11px] font-mono border border-white/5"
-                  >
+                  <span key={idx} className="px-2 py-0.5 bg-[#080A0D] border border-white/5">
                     #{tag}
                   </span>
                 ))}
               </div>
             )}
           </div>
+
         </div>
+
       </div>
     </div>
   );
 };
-

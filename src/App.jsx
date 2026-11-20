@@ -5,9 +5,8 @@ import { CvDownloadModal } from './components/CvDownloadModal';
 import { VideoModal } from './components/VideoModal';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
+import { Resume } from './sections/Resume';
 import { Portfolio } from './sections/Portfolio';
-import { Experience } from './sections/Experience';
-import { Skills } from './sections/Skills';
 import { Contact } from './sections/Contact';
 import { Footer } from './sections/Footer';
 
@@ -16,33 +15,38 @@ export function AppContent() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <div className="min-h-screen bg-charcoal-950 text-cream relative selection:bg-gold selection:text-charcoal-950">
-      {/* Global subtle film noise overlay */}
-      <div className="bg-noise" />
-
-      {/* Floating Morphing Navbar */}
+    <div className="min-h-screen bg-[#080A0D] text-white relative selection:bg-accentBlue selection:text-white font-sans antialiased">
+      {/* Top Navigation */}
       <Navbar onOpenCvModal={() => setCvModalOpen(true)} />
 
-      {/* Main Content Sections */}
+      {/* Main Editorial Sections */}
       <main>
+        {/* Section 01: Hero / Home (Screenshot 1) */}
         <Hero onOpenCvModal={() => setCvModalOpen(true)} />
-        <About onOpenCvModal={() => setCvModalOpen(true)} />
+
+        {/* Section 02: About (Screenshot 2) */}
+        <About />
+
+        {/* Section 03: Resume / Profile - 3 Columns (Screenshot 3) */}
+        <Resume />
+
+        {/* Section 04: Portfolio / Selected Works */}
         <Portfolio onSelectProject={(project) => setSelectedProject(project)} />
-        <Experience />
-        <Skills />
-        <Contact onOpenCvModal={() => setCvModalOpen(true)} />
+
+        {/* Section 05: Contact & Inquiries */}
+        <Contact />
       </main>
 
-      {/* Cinematic Footer */}
+      {/* Minimal Footer */}
       <Footer />
 
-      {/* Dedicated Bilingual CV Download Modal */}
+      {/* Bilingual CV Download Modal */}
       <CvDownloadModal
         isOpen={cvModalOpen}
         onClose={() => setCvModalOpen(false)}
       />
 
-      {/* Cinematic Project Video Modal */}
+      {/* Cinematic Video Player Modal */}
       <VideoModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
@@ -58,4 +62,3 @@ export default function App() {
     </LanguageProvider>
   );
 }
-

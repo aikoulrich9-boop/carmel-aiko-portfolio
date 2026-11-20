@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Play, Film, Sparkles, Filter, Clock, Eye, Layers } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { projects, projectCategories } from '../data/projects';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Portfolio = ({ onSelectProject }) => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
   const sectionRef = useRef(null);
 
@@ -21,17 +21,17 @@ export const Portfolio = ({ onSelectProject }) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.portfolio-card',
-        { opacity: 0, y: 35 },
+        '.portfolio-item',
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          stagger: 0.1,
+          stagger: 0.12,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 75%',
           },
         }
       );
@@ -44,127 +44,109 @@ export const Portfolio = ({ onSelectProject }) => {
     <section
       ref={sectionRef}
       id="portfolio"
-      className="relative w-full py-28 px-4 sm:px-6 lg:px-8 bg-charcoal-950 overflow-hidden"
+      className="relative w-full min-h-screen bg-[#080A0D] py-24 sm:py-32 border-t border-white/5"
     >
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-0 w-96 h-96 bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-cinema-cyan/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+        
+        {/* Header & Category Filter Bar */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div>
+            <span className="text-[11px] font-mono tracking-widest text-accentBlue uppercase block mb-1">
+              {language === 'fr' ? 'ŒUVRES SÉLECTIONNÉES' : 'SELECTED WORKS'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-sans font-bold tracking-widest text-white uppercase">
+              PORTFOLIO
+            </h2>
+          </div>
 
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-mono font-semibold tracking-widest text-gold uppercase">
-            {t.portfolio.sectionTag}
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-sans font-bold text-cream mt-2 tracking-tight">
-            {t.portfolio.title}
-          </h2>
-          <p className="text-base sm:text-lg text-slateText mt-3 font-serif italic">
-            {t.portfolio.subtitle}
-          </p>
+          {/* Minimalist Editorial Tabs */}
+          <div className="flex flex-wrap items-center gap-6 text-xs font-mono">
+            {projectCategories.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`uppercase tracking-wider transition-colors pb-1 border-b ${
+                    isActive
+                      ? 'text-accentBlue border-accentBlue font-semibold'
+                      : 'text-mutedText border-transparent hover:text-white'
+                  }`}
+                >
+                  {cat.label[language]}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Category Filters Bar (Inspired by Image 3) */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
-          {projectCategories.map((cat) => {
-            const isActive = activeCategory === cat.id;
+        {/* Editorial Asymmetric & Balanced Project Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+          {filteredProjects.map((project, idx) => {
+            // Asymmetric layout span
+            const colSpan = idx % 3 === 0 ? 'lg:col-span-8' : idx % 3 === 1 ? 'lg:col-span-4' : 'lg:col-span-12';
+            const aspectClass = idx % 3 === 0 ? 'aspect-[16/9]' : idx % 3 === 1 ? 'aspect-[4/3]' : 'aspect-[21/9]';
+
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-sans font-medium transition-all duration-300 btn-magnetic ${
-                  isActive
-                    ? 'bg-gold text-charcoal-950 font-bold shadow-glow-gold'
-                    : 'bg-charcoal-900 text-slateText hover:text-white border border-white/5 hover:border-white/20'
-                }`}
+              <div
+                key={project.id}
+                onClick={() => onSelectProject(project)}
+                className={`portfolio-item ${colSpan} group cursor-pointer`}
               >
-                {cat.label[language]}
-              </button>
+                {/* Image Frame */}
+                <div className={`relative ${aspectClass} overflow-hidden bg-[#111419] border border-white/10`}>
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title[language]}
+                    className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+
+                  {/* Dark hover tint with play icon */}
+                  <div className="absolute inset-0 bg-[#080A0D]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full border border-white/30 bg-[#080A0D]/80 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                      <Play className="w-4 h-4 ml-0.5 fill-current text-accentBlue" />
+                    </div>
+                  </div>
+
+                  {/* Top Right Duration Pill */}
+                  <div className="absolute top-4 right-4">
+                    <span className="font-mono text-[10px] tracking-wider uppercase px-2 py-1 bg-[#080A0D]/80 backdrop-blur-sm text-mutedText border border-white/10">
+                      {project.duration}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Minimalist Editorial Metadata */}
+                <div className="mt-3 flex items-start justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-accentBlue uppercase tracking-wider mb-1">
+                      <span>{project.category}</span>
+                      <span>•</span>
+                      <span>{project.year}</span>
+                      {project.client && (
+                        <>
+                          <span>•</span>
+                          <span className="text-mutedText">{project.client}</span>
+                        </>
+                      )}
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-sans font-bold text-white uppercase tracking-tight group-hover:text-accentBlue transition-colors">
+                      {project.title[language]}
+                    </h3>
+                  </div>
+
+                  <span className="text-[11px] font-mono text-mutedText/80 text-right shrink-0 ml-4">
+                    {project.role[language]}
+                  </span>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        {/* Cinematic Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => onSelectProject(project)}
-              className="portfolio-card group relative bg-charcoal-900 border border-white/10 hover:border-gold/50 rounded-[2.2rem] overflow-hidden cursor-pointer card-hover shadow-2xl flex flex-col justify-between"
-            >
-              {/* Media Thumbnail Container */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-black">
-                <img
-                  src={project.thumbnail}
-                  alt={project.title[language]}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                  loading="lazy"
-                />
-
-                {/* Gradient darkening */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-black/30" />
-
-                {/* Category Pill Top Left */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-charcoal-950/80 backdrop-blur-md border border-white/10 text-gold text-[10px] font-mono uppercase tracking-wider font-semibold">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Duration / Aspect Ratio Pill Top Right */}
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-charcoal-950/80 backdrop-blur-md border border-white/10 text-slateText text-[10px] font-mono">
-                  <Clock className="w-3 h-3 text-gold" />
-                  <span>{project.duration}</span>
-                </div>
-
-                {/* Hover Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-charcoal-950/40 backdrop-blur-[2px]">
-                  <div className="w-14 h-14 rounded-full bg-gold text-charcoal-950 flex items-center justify-center shadow-glow-gold scale-90 group-hover:scale-100 transition-transform duration-300">
-                    <Play className="w-6 h-6 ml-0.5 fill-current" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Card Information */}
-              <div className="p-6 flex flex-col justify-between flex-grow">
-                <div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 font-mono mb-2">
-                    <span>{project.client}</span>
-                    <span className="text-gold">{project.year}</span>
-                  </div>
-
-                  <h3 className="text-xl font-sans font-bold text-cream group-hover:text-gold transition-colors line-clamp-1">
-                    {project.title[language]}
-                  </h3>
-
-                  <p className="text-slateText text-xs sm:text-sm mt-2 line-clamp-2 leading-relaxed">
-                    {project.description[language]}
-                  </p>
-                </div>
-
-                {/* Role badge & View Project trigger */}
-                <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-medium text-slate-400">
-                    {project.role[language]}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold group-hover:underline">
-                    {t.portfolio.watchVideo}
-                    <Eye className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Note / Future Expansion */}
-        <div className="mt-14 text-center">
-          <p className="text-xs font-mono text-slate-500">
-            Showreel complet & films sous accord de confidentialité disponibles sur demande privée.
-          </p>
-        </div>
       </div>
     </section>
   );
 };
-
