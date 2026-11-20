@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Camera, Film, Disc, Plane, Headphones, Check } from 'lucide-react';
+import { Camera, Film, Disc, Plane, BookOpen, Sparkles, Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { softwareSkills, languageSkills, personalSkills, hobbies, services } from '../data/skills';
+import { softwareSkills, languageSkills, personalSkills, hobbies, services, aiSkills } from '../data/skills';
 import { experiences, educations } from '../data/experiences';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +14,8 @@ const getHobbyIcon = (iconName) => {
     case 'film': return <Film className="w-3.5 h-3.5" />;
     case 'disc': return <Disc className="w-3.5 h-3.5" />;
     case 'plane': return <Plane className="w-3.5 h-3.5" />;
-    default: return <Headphones className="w-3.5 h-3.5" />;
+    case 'book': return <BookOpen className="w-3.5 h-3.5" />;
+    default: return <Film className="w-3.5 h-3.5" />;
   }
 };
 
@@ -55,10 +56,10 @@ export const Resume = () => {
         {/* Section Title Header */}
         <div className="mb-16">
           <span className="text-[11px] font-mono tracking-widest text-accentBlue uppercase block mb-1">
-            {language === 'fr' ? 'PROFIL PROFESSIONNEL' : 'PROFESSIONAL PROFILE'}
+            {language === 'fr' ? 'PROFIL PROFESSIONNEL & HISTORIQUE' : 'PROFESSIONAL PROFILE & TIMELINE'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-sans font-bold tracking-widest text-white uppercase">
-            {language === 'fr' ? 'CURRICULUM & EXPERTISE' : 'RESUME & EXPERTISE'}
+            {language === 'fr' ? 'CURRICULUM VITAE & COMPÉTENCES' : 'RESUME & TECHNICAL COMPETENCIES'}
           </h2>
         </div>
 
@@ -75,7 +76,7 @@ export const Resume = () => {
               <div className="border-b border-accentBlue/40 pb-2 mb-6">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'LOGICIELS & POST-PRODUCTION' : 'SOFTWARE SKILLS'}
+                  {language === 'fr' ? 'LOGICIELS & POSTPRODUCTION' : 'SOFTWARE & POST-PRODUCTION'}
                 </h3>
               </div>
 
@@ -84,7 +85,9 @@ export const Resume = () => {
                   <div key={idx} className="group">
                     <div className="flex items-center justify-between text-xs font-mono mb-2 text-mutedText">
                       <span className="text-white font-medium">{software.name}</span>
-                      <span className="text-[10px] text-accentBlue">{software.level}%</span>
+                      <span className="text-[10px] text-accentBlue">
+                        {language === 'fr' ? software.badge : software.badgeEn}
+                      </span>
                     </div>
 
                     {/* Thin horizontal line with subtle blue slider dot (as in Screenshot 3) */}
@@ -102,7 +105,7 @@ export const Resume = () => {
               </div>
             </div>
 
-            {/* LANGUAGES */}
+            {/* LANGUAGES (Français, Anglais, Fon, Yoruba) */}
             <div>
               <div className="border-b border-accentBlue/40 pb-2 mb-6">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
@@ -116,7 +119,7 @@ export const Resume = () => {
                   <div key={lIdx}>
                     <div className="flex items-center justify-between text-xs font-mono mb-2 text-mutedText">
                       <span className="text-white font-medium">{lang.name}</span>
-                      <span className="text-[10px] text-mutedText/80">{lang.levelText.split('/')[0]}</span>
+                      <span className="text-[10px] text-mutedText/80">{lang.levelText}</span>
                     </div>
                     <div className="relative h-[2px] w-full bg-white/10 rounded-full">
                       <div
@@ -136,7 +139,7 @@ export const Resume = () => {
               <div className="border-b border-accentBlue/40 pb-2 mb-4">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'QUALITÉS PROFESSIONNELLES' : 'PERSONAL SKILLS'}
+                  {language === 'fr' ? 'QUALITÉS PROFESSIONNELLES' : 'PROFESSIONAL STRENGTHS'}
                 </h3>
               </div>
 
@@ -158,7 +161,7 @@ export const Resume = () => {
               <div className="border-b border-accentBlue/40 pb-2 mb-6">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'EXPÉRIENCE' : 'EXPERIENCE'}
+                  {language === 'fr' ? 'EXPÉRIENCES PROFESSIONNELLES' : 'WORK EXPERIENCE'}
                 </h3>
               </div>
 
@@ -175,46 +178,53 @@ export const Resume = () => {
                         {exp.period}
                       </span>
 
-                      {/* Company Name in bold */}
+                      {/* Role & Company in bold */}
                       <h4 className="text-sm font-sans font-bold text-white uppercase tracking-wide">
-                        {exp.company}
+                        {exp.role[language]}
                       </h4>
 
-                      {/* Position */}
-                      <p className="text-xs font-sans text-mutedText font-medium mt-0.5 mb-2">
-                        {exp.role[language]}
+                      <p className="text-xs font-sans text-accentBlue/90 font-medium mt-0.5 mb-1.5">
+                        {exp.company} • <span className="text-mutedText/80">{exp.location}</span>
                       </p>
 
-                      {/* Description */}
-                      <p className="text-xs text-mutedText/80 leading-relaxed font-normal">
-                        {exp.description[language]}
-                      </p>
+                      {/* Highlights */}
+                      <ul className="space-y-1 text-xs text-mutedText/90 leading-relaxed font-normal">
+                        {exp.highlights[language].map((hl, hIdx) => (
+                          <li key={hIdx} className="flex items-start gap-1.5">
+                            <span className="text-accentBlue mt-0.5">•</span>
+                            <span>{hl}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* EDUCATION */}
+            {/* FORMATION ACADÉMIQUE */}
             <div>
               <div className="border-b border-accentBlue/40 pb-2 mb-6">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'FORMATION' : 'EDUCATION'}
+                  {language === 'fr' ? 'FORMATION ACADÉMIQUE' : 'EDUCATION'}
                 </h3>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {educations.map((edu) => (
                   <div key={edu.id} className="text-xs">
                     <span className="text-[10px] font-mono text-accentBlue tracking-wider block">
                       {edu.year}
                     </span>
-                    <h5 className="font-sans font-bold text-white mt-0.5">
+                    <h5 className="font-sans font-bold text-white mt-0.5 text-sm">
                       {edu.degree[language]}
                     </h5>
-                    <p className="text-mutedText text-[11px] mt-0.5">
+                    <p className="text-accentBlue/90 text-xs mt-0.5 font-medium">
                       {edu.institution[language]}
+                    </p>
+                    <p className="text-mutedText/80 text-[11px] mt-1 leading-relaxed">
+                      {edu.specialization[language]}
                     </p>
                   </div>
                 ))}
@@ -225,11 +235,11 @@ export const Resume = () => {
 
 
           {/* ======================================================== */}
-          {/* COLUMN 3: EXPERTISE (What can I do, Design, Hobbies)     */}
+          {/* COLUMN 3: EXPERTISE, IA & CENTRES D'INTÉRÊT              */}
           {/* ======================================================== */}
           <div className="resume-col lg:col-span-3 space-y-12">
             
-            {/* WHAT CAN I DO ? */}
+            {/* DOMAINES D'ACTION / WHAT CAN I DO ? */}
             <div>
               <div className="border-b border-accentBlue/40 pb-2 mb-4">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
@@ -238,52 +248,61 @@ export const Resume = () => {
                 </h3>
               </div>
 
-              <div className="space-y-2 text-xs font-mono text-mutedText">
+              <div className="space-y-2.5 text-xs font-mono text-mutedText">
                 {services.map((svc) => (
                   <div key={svc.id} className="leading-snug">
-                    <span className="text-white/80 font-sans font-medium block">
+                    <span className="text-white/90 font-sans font-medium block">
                       {svc.title[language]}
+                    </span>
+                    <span className="text-[11px] text-mutedText/80 block line-clamp-1">
+                      {svc.description[language]}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* DESIGN & TECHNICAL SKILLS */}
+            {/* INTELLIGENCE ARTIFICIELLE & CRÉATION AUDIOVISUELLE */}
             <div>
               <div className="border-b border-accentBlue/40 pb-2 mb-4">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'DIRECTION TECHNIQUE' : 'DESIGN & TECH SKILLS'}
+                  {language === 'fr' ? 'INTELLIGENCE ARTIFICIELLE' : 'AI & VIDEO WORKFLOWS'}
                 </h3>
               </div>
 
-              <ul className="space-y-1.5 text-xs font-mono text-mutedText">
-                <li>• Narrative Pacing & Tension</li>
-                <li>• Multi-Camera Conform</li>
-                <li>• ACES & HDR Color Science</li>
-                <li>• Sound Design & Foley Sync</li>
-                <li>• PAD & Cinema DCP Mastering</li>
-              </ul>
+              <div className="space-y-3 text-xs font-mono">
+                {aiSkills.map((ai, idx) => (
+                  <div key={idx} className="p-2.5 bg-white/[0.02] border border-white/5">
+                    <div className="flex items-center gap-1.5 text-accentBlue font-bold text-xs mb-1">
+                      <Sparkles className="w-3 h-3" />
+                      <span>{ai.tool}</span>
+                    </div>
+                    <p className="text-[11px] text-mutedText leading-relaxed">
+                      {ai.role[language]}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* HOBBIES & INTERESTS (With small monochrome circular icons as in Screenshot 3) */}
+            {/* CENTRES D'INTÉRÊT (With small monochrome circular icons as in Screenshot 3) */}
             <div>
               <div className="border-b border-accentBlue/40 pb-2 mb-5">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2">
                   <span className="text-accentBlue">//</span>
-                  {language === 'fr' ? 'INTÉRÊTS & PASSIONS' : 'HOBBIES & INTERESTS'}
+                  {language === 'fr' ? 'CENTRES D’INTÉRÊT' : 'HOBBIES & INTERESTS'}
                 </h3>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 {hobbies.map((h, idx) => (
-                  <div key={idx} className="flex flex-col items-center text-center p-2 rounded bg-white/[0.02]">
+                  <div key={idx} className="flex flex-col items-center text-center p-2.5 rounded bg-white/[0.02] border border-white/5">
                     <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-mutedText mb-1.5">
                       {getHobbyIcon(h.icon)}
                     </div>
                     <span className="text-[10px] font-mono text-mutedText tracking-tight">
-                      {h.title[language].split(' ')[0]}
+                      {h.title[language]}
                     </span>
                   </div>
                 ))}

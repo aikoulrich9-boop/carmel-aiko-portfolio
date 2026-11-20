@@ -1,179 +1,177 @@
 /**
  * Skills & Technical Competencies Data
- * Inspired by Image 1 & 2 layout systems + cinematic editing tools
+ * Authentic Information from Curriculum Vitae Carmel Ulrich AIKO
  */
 
 export const softwareSkills = [
   {
     name: 'Adobe Premiere Pro',
-    category: 'NLE Video Editing',
-    level: 98,
+    category: 'Montage Vidéo & Postproduction NLE',
+    level: 95,
     icon: 'film',
-    badge: 'Maîtrise Experte',
-    badgeEn: 'Expert Mastery',
+    badge: 'Expertise Principale',
+    badgeEn: 'Primary Expertise',
   },
   {
-    name: 'DaVinci Resolve Studio',
-    category: 'Editing & Color Grading',
-    level: 95,
+    name: 'DaVinci Resolve',
+    category: 'Montage & Étalonnage de base',
+    level: 80,
     icon: 'sliders',
-    badge: 'Étalonnage & Cut',
-    badgeEn: 'Grading & Cut',
+    badge: 'Montage & Color Base',
+    badgeEn: 'Editing & Base Color',
   },
   {
     name: 'Adobe After Effects',
-    category: 'Motion Graphics & VFX',
+    category: 'Animation Graphique & Effets Visuels',
+    level: 75,
+    icon: 'sparkles',
+    badge: 'Animation & VFX',
+    badgeEn: 'Motion & VFX',
+  },
+  {
+    name: 'Adobe Photoshop',
+    category: 'Retouche & Traitement d’Images',
+    level: 85,
+    icon: 'palette',
+    badge: 'Retouche Graphique',
+    badgeEn: 'Graphic Retouching',
+  },
+  {
+    name: 'Adobe Illustrator',
+    category: 'Conception Graphique Vectorielle',
+    level: 78,
+    icon: 'monitor',
+    badge: 'Design Vectoriel',
+    badgeEn: 'Vector Design',
+  },
+  {
+    name: 'IA & Création Vidéo (Higgsfield / Seedance 2.5)',
+    category: 'Génération & Workflows IA',
     level: 88,
     icon: 'sparkles',
-    badge: 'Compositing / Motion',
-    badgeEn: 'Compositing / Motion',
-  },
-  {
-    name: 'Avid Media Composer',
-    category: 'Broadcast & Cinema Workflows',
-    level: 82,
-    icon: 'monitor',
-    badge: 'Normes Broadcast',
-    badgeEn: 'Broadcast Standards',
-  },
-  {
-    name: 'Audition & Pro Tools',
-    category: 'Sound Design & Audio Mix',
-    level: 85,
-    icon: 'volume-2',
-    badge: 'Mix & Nettoyage',
-    badgeEn: 'Mix & Cleanup',
+    badge: 'Workflows IA Créative',
+    badgeEn: 'Creative AI Pipelines',
   },
 ];
 
-export const coreMastery = [
+export const aiSkills = [
   {
-    title: { fr: 'Rythme & Narration Dramatique', en: 'Rhythm & Dramatic Narrative' },
-    percentage: 98,
-    desc: {
-      fr: 'Capacité à sculpter le temps, bâtir la tension émotionnelle et trouver la respiration juste de chaque scène.',
-      en: 'Sculpting temporal perception, building emotional tension, and finding the precise natural breathing of each scene.',
+    tool: 'Higgsfield',
+    role: {
+      fr: 'Génération et transformation de séquences vidéo cinématiques',
+      en: 'Cinematic video sequence generation and transformation',
     },
   },
   {
-    title: { fr: 'Direction de Post-Production', en: 'Post-Production Supervision' },
-    percentage: 94,
-    desc: {
-      fr: 'Gestion intégrale du flux d’ingest, proxy, sound design, color conform, mixage et livrables finaux multi-formats.',
-      en: 'End-to-end management from ingest, proxy workflows, sound design, color conform, mix to multi-format deliverables.',
+    tool: 'Seedance 2.5',
+    role: {
+      fr: 'Génération vidéo avancée à partir de prompts textuels et d’images',
+      en: 'Advanced text-to-video and image-to-video generation',
     },
   },
   {
-    title: { fr: 'Étalonnage & Color Science', en: 'Color Grading & Color Science' },
-    percentage: 90,
-    desc: {
-      fr: 'Création de LUTs sur mesure, respect des chartes chromatiques et étalonnage cinématographique (Log / RAW / ACES).',
-      en: 'Custom LUT authoring, rigorous chromatic palette adherence, and cinematic grading (Log / RAW / ACES).',
+    tool: 'ChatGPT & LLMs',
+    role: {
+      fr: 'Assistance créative, découpage narratif et automatisation de workflows',
+      en: 'Creative ideation, script breakdown, and workflow architecture',
     },
   },
   {
-    title: { fr: 'Sound Design & Rhythmic Sync', en: 'Sound Design & Audio Pacing' },
-    percentage: 92,
-    desc: {
-      fr: 'Habillage sonore immersif, découpe au millième de seconde sur les transitoires musicales et Foley réaliste.',
-      en: 'Immersive soundscapes, micro-second transient cutting aligned to musical beats, and realistic Foley selection.',
-    },
-  },
-  {
-    title: { fr: 'Motion Design & Clean-up VFX', en: 'Motion Design & VFX Clean-up' },
-    percentage: 86,
-    desc: {
-      fr: 'Intégration typographique cinétique, tracking 2D/3D, retouches beauté et suppression d’éléments indésirables.',
-      en: 'Kinetic typography integration, 2D/3D point tracking, subtle beauty retouching, and plate clean-up.',
+    tool: 'IA Environnements & Décors',
+    role: {
+      fr: 'Transformation d’environnements, habillages visuels et extensions de plans',
+      en: 'Environment manipulation, visual branding, and plate extension',
     },
   },
 ];
 
 export const personalSkills = [
-  { fr: 'Sens du Récit & Narration', en: 'Narrative Instinct & Arc' },
-  { fr: 'Gestion de la Pression & Délais', en: 'High-Pressure Delivery' },
-  { fr: 'Écoute & Dialogue Réalisateur', en: 'Director Creative Dialogue' },
-  { fr: 'Rigueur des Formats Broadcast', en: 'Broadcast Standards Rigor' },
-  { fr: 'Curiosité & Veille Esthétique', en: 'Cinematic Trendsetter' },
+  { fr: 'Coordination d’Équipes de Montage', en: 'Editing Crew Coordination' },
+  { fr: 'Supervision & Contrôle Qualité', en: 'Post Quality Control' },
+  { fr: 'Sens du Rythme & Narration Visuelle', en: 'Rhythm & Narrative Pacing' },
+  { fr: 'Intégration d’Outils Innovants (IA)', en: 'AI Tools & Innovation' },
+  { fr: 'Adaptabilité Délais & Événementiel', en: 'Fast-Turnaround Delivery' },
 ];
 
 export const hobbies = [
   {
-    icon: 'camera',
-    title: { fr: 'Photographie 35mm', en: '35mm Film Photography' },
-  },
-  {
     icon: 'film',
-    title: { fr: 'Cinéma d’Auteur', en: 'Auteur & World Cinema' },
-  },
-  {
-    icon: 'disc',
-    title: { fr: 'Sound Design Analogique', en: 'Modular Sound Synthesis' },
+    title: { fr: 'Films & Cinéma', en: 'Cinema & Films' },
   },
   {
     icon: 'plane',
-    title: { fr: 'Voyages & Explorations', en: 'Travel & Field Research' },
+    title: { fr: 'Voyages & Découvertes', en: 'Travel & Exploration' },
+  },
+  {
+    icon: 'disc',
+    title: { fr: 'Musique', en: 'Music' },
+  },
+  {
+    icon: 'book',
+    title: { fr: 'Lecture & Récits', en: 'Reading & Literature' },
   },
 ];
 
 export const languageSkills = [
-  { name: 'Français', levelText: 'Langue maternelle / Native', levelScore: 100 },
-  { name: 'English', levelText: 'Courant professionnel / Professional working', levelScore: 90 },
+  { name: 'Français', levelText: 'Courant / Langue de travail', levelScore: 100 },
+  { name: 'Anglais', levelText: 'Intermédiaire (professionnel)', levelScore: 65 },
+  { name: 'Fon', levelText: 'Langue nationale (Bénin)', levelScore: 95 },
+  { name: 'Yoruba', levelText: 'Langue régionale (Bénin / Nigéria)', levelScore: 85 },
 ];
 
 export const services = [
   {
-    id: 'service-montage',
-    icon: 'scissors',
-    title: { fr: 'Montage Long & Court-Métrage', en: 'Feature & Short Film Editing' },
-    description: {
-      fr: 'Découpage narratif, construction des personnages et travail fin sur la temporalité dramatique.',
-      en: 'Narrative structure, character rhythm, and nuanced sculpting of cinematic time.',
-    },
-  },
-  {
-    id: 'service-pub',
+    id: 'service-montage-pub',
     icon: 'zap',
-    title: { fr: 'Publicités & Brand Content', en: 'Commercials & High-Impact Ads' },
+    title: { fr: 'Spots Publicitaires & Marques', en: 'Commercials & Brand Content' },
     description: {
-      fr: 'Montages percutants pour les marques, captant l’attention dès les trois premières secondes.',
-      en: 'High-octane commercial cuts engineered to grip audience attention within the first three seconds.',
+      fr: 'Montage percutant pour la télévision et le digital (notamment Celtis Bénin, campagnes télécom et corporate).',
+      en: 'High-impact commercial cutting for broadcast and digital (notably Celtis Benin, telecom, and corporate).',
     },
   },
   {
-    id: 'service-doc',
-    icon: 'compass',
-    title: { fr: 'Documentaires & Grands Reportages', en: 'Documentaries & Deep Features' },
+    id: 'service-supervision',
+    icon: 'scissors',
+    title: { fr: 'Chef Monteur & Supervision', en: 'Chief Editor & Post Supervision' },
     description: {
-      fr: 'Valorisation des témoignages, croisement d’archives historiques et narration humaine authentique.',
-      en: 'Elevating real stories, seamlessly weaving archive footage, and crafting authentic human narratives.',
+      fr: 'Coordination de monteurs, répartition des tâches et garantie du niveau de finition artistique et technique.',
+      en: 'Post-production crew coordination, task distribution, and technical/artistic quality assurance.',
     },
   },
   {
-    id: 'service-color',
-    icon: 'palette',
-    title: { fr: 'Étalonnage & Teinte Visuelle', en: 'Color Grading & Look Dev' },
+    id: 'service-fiction-series',
+    icon: 'film',
+    title: { fr: 'Cinéma, Séries & Courts Métrages', en: 'Cinema, Series & Fiction' },
     description: {
-      fr: 'Harmonisation chromatique des caméras, ambiances denses et grain argentique texturé.',
-      en: 'Camera matching, dense mood-setting palettes, and organic film grain emulation.',
+      fr: 'Montage de fictions, séries et longs métrages (expérience acquise notamment chez Arc-en-ciel Films au Mali).',
+      en: 'Editing feature films, TV series, and narrative shorts (notably with Arc-en-ciel Films in Mali).',
     },
   },
   {
-    id: 'service-sound',
-    icon: 'headphones',
-    title: { fr: 'Sound Design & Spatialisation', en: 'Sound Design & Foley Sculpting' },
+    id: 'service-institutionnel',
+    icon: 'monitor',
+    title: { fr: 'Films Institutionnels & Politiques', en: 'Institutional & Campaign Media' },
     description: {
-      fr: 'Création d’un univers sonore immersif qui donne de la texture et du poids à chaque image.',
-      en: 'Crafting immersive audio architecture that injects texture, weight, and presence into every frame.',
+      fr: 'Communication vidéo d’envergure, dont la campagne électorale en Côte d’Ivoire 2025 et films d’entreprises.',
+      en: 'High-stakes video assets, including the 2025 Ivory Coast election campaign and institutional films.',
     },
   },
   {
-    id: 'service-mastering',
-    icon: 'check-circle-2',
-    title: { fr: 'Conformation & Mastering PAD', en: 'Conform & Broadcast Mastering' },
+    id: 'service-ia-video',
+    icon: 'sparkles',
+    title: { fr: 'Workflows Vidéo & IA Créative', en: 'Creative AI & Video Pipelines' },
     description: {
-      fr: 'Exports stricts conformes aux normes broadcast internationales, cinéma DCP et réseaux sociaux.',
-      en: 'Strict mastering compliant with international broadcast specifications, cinema DCP, and modern web.',
+      fr: 'Exploration d’outils génératifs (Higgsfield, Seedance 2.5) pour la transformation de décors et création d’assets.',
+      en: 'Leveraging generative video tools (Higgsfield, Seedance 2.5) for environment replacement and asset synthesis.',
+    },
+  },
+  {
+    id: 'service-digital-cadrage',
+    icon: 'camera',
+    title: { fr: 'Captation Vidéo & Contenus Sociaux', en: 'Camera Shooting & Social Media' },
+    description: {
+      fr: 'Prise de vue, cadrage et formats courts dynamiques à fort engagement pour les plateformes digitales.',
+      en: 'Camera shooting, framing, and dynamic short-form social video formats for digital platforms.',
     },
   },
 ];
