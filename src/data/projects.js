@@ -22,7 +22,7 @@ export const projects = [
     productionCompany: 'Boss Playa International',
     client: 'Celtis Bénin',
     year: 2025,
-    thumbnail: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80',
+    thumbnail: '/images/celtis-benin-thumbnail.jpg',
     videoUrl: '/videos/celtis-benin-master.mp4',
     description: {
       fr: "Montage de spots publicitaires télévisés et digitaux pour l'opérateur Celtis Bénin en collaboration avec Boss Playa International. Découpage dynamique, rythme calibré et habillage visuel.",
