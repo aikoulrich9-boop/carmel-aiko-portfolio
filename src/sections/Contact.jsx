@@ -27,9 +27,21 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#080A0D] py-24 sm:py-32 border-t border-white/5"
+      className="relative w-full bg-[#080A0D] py-24 sm:py-32 border-t border-white/5 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+      {/* Background Image - Architectural texture with 45% opacity */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <img
+          src="/images/contact-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center opacity-[0.45]"
+        />
+        {/* Subtle gradient overlay to preserve contrast and smooth section blend */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080A0D] via-[#080A0D]/50 to-[#080A0D]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
