@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carmel-aiko.com/sitemap.xml
+

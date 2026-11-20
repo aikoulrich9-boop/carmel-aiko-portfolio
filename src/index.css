@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #07070a;
+  }
+  
+  body {
+    background-color: #07070a;
+    color: #faf9f6;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #d4a843;
+    color: #07070a;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232535;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4a843;
+  }
+}
+
+/* Global SVG Noise Overlay */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 9999;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Micro-interaction Magnetic / Smooth Classes */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btn-magnetic:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+.link-hover {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
+}
+.link-hover:hover {
+  transform: translateY(-1px);
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(19, 20, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-subtle {
+  background: rgba(14, 15, 20, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glow effects */
+.glow-gold-hover:hover {
+  box-shadow: 0 0 25px rgba(212, 168, 67, 0.25);
+}
+
