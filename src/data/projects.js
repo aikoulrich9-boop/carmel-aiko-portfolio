@@ -21,7 +21,7 @@ export const projects = [
     category: 'commercial',
     productionCompany: 'Boss Playa International',
     client: 'Celtis Bénin',
-    year: 2025,
+    year: 2026,
     thumbnail: '/images/celtis-benin-thumbnail.jpg',
     videoUrl: '/videos/celtis-benin-master.mp4',
     description: {
