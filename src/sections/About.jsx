@@ -106,6 +106,7 @@ export const About = () => {
 
               {/* Cinematic Vignette & Edge Blend (Fades seamlessly into #080A0D) */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#080A0D] via-transparent to-transparent opacity-90 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#080A0D]/70 via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D] via-[#080A0D]/30 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#080A0D]/60 via-transparent to-transparent pointer-events-none" />
             </div>
