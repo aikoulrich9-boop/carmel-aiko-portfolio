@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../context/LanguageContext';
@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const About = () => {
   const { language } = useLanguage();
   const sectionRef = useRef(null);
+  const [portraitSrc, setPortraitSrc] = useState('/images/carmel-aiko-portrait.jpg');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -95,17 +96,18 @@ export const About = () => {
           {/* Right Column: Large Photographic Portrait (Seamlessly Blended) */}
           <div className="lg:col-span-6 xl:col-span-5 relative flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md lg:max-w-none h-[480px] sm:h-[580px] lg:h-[640px] overflow-hidden">
-              {/* The Portrait Image */}
+              {/* Carmel Ulrich AIKO Portrait */}
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85"
-                alt="Carmel Ulrich AIKO"
-                className="w-full h-full object-cover object-top filter grayscale contrast-125 brightness-90 transition-transform duration-1000 hover:scale-105"
+                src="/images/carmel-aiko-portrait.jpg"
+                alt="Carmel Ulrich AIKO — Monteur Vidéo & Chef Monteur"
+                className="w-full h-full object-cover object-top contrast-110 transition-transform duration-1000 hover:scale-105"
+                loading="eager"
               />
 
               {/* Cinematic Vignette & Edge Blend (Fades seamlessly into #080A0D) */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#080A0D] via-transparent to-transparent opacity-95 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D] via-[#080A0D]/20 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#080A0D] via-transparent to-transparent opacity-80 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#080A0D] via-transparent to-transparent opacity-90 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D] via-[#080A0D]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#080A0D]/60 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
