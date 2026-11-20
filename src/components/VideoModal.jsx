@@ -37,13 +37,27 @@ export const VideoModal = ({ project, onClose }) => {
           {/* Responsive Video Container (16:9) */}
           <div className="relative w-full aspect-video bg-black border border-white/10">
             {project.videoUrl ? (
-              <iframe
-                src={`${project.videoUrl}?autoplay=1&rel=0&modestbranding=1`}
-                title={project.title[language]}
-                className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              project.videoUrl.endsWith('.mp4') || project.videoUrl.endsWith('.mov') || project.videoUrl.startsWith('/videos/') ? (
+                <video
+                  src={project.videoUrl}
+                  controls
+                  autoPlay
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-contain bg-black"
+                >
+                  <source src={project.videoUrl} type="video/mp4" />
+                  Your browser does not support HTML5 video playback.
+                </video>
+              ) : (
+                <iframe
+                  src={`${project.videoUrl}?autoplay=1&rel=0&modestbranding=1`}
+                  title={project.title[language]}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )
             ) : (
               <div className="relative w-full h-full">
                 <img

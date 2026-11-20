@@ -23,7 +23,7 @@ export const projects = [
     client: 'Celtis Bénin',
     year: 2025,
     thumbnail: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: '/videos/celtis-benin-master.mp4',
     description: {
       fr: "Montage de spots publicitaires télévisés et digitaux pour l'opérateur Celtis Bénin en collaboration avec Boss Playa International. Découpage dynamique, rythme calibré et habillage visuel.",
       en: "Broadcast and digital commercial editing for telecom provider Celtis Benin in partnership with Boss Playa International. High-energy cuts, brand pacing, and graphics.",
@@ -33,8 +33,8 @@ export const projects = [
       en: 'Video Editor',
     },
     published: true,
-    duration: '45 sec / 30 sec',
-    aspectRatio: '16:9 & 9:16',
+    duration: '46 sec',
+    aspectRatio: '16:9 (Full HD 1080p)',
     tags: ['Publicité', 'Télécom', 'Celtis Bénin', 'Boss Playa', 'Premiere Pro'],
   },
   {
