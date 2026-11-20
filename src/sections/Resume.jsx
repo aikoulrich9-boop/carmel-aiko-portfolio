@@ -49,9 +49,21 @@ export const Resume = () => {
     <section
       ref={sectionRef}
       id="resume"
-      className="relative w-full min-h-screen bg-[#080A0D] py-24 sm:py-32 border-t border-white/5"
+      className="relative w-full min-h-screen bg-[#080A0D] py-24 sm:py-32 border-t border-white/5 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+      {/* Background Image - Architectural geometry with 45% opacity */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <img
+          src="/images/resume-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center opacity-[0.45]"
+        />
+        {/* Subtle gradient overlay to smoothly transition top/bottom borders and preserve contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080A0D] via-[#080A0D]/50 to-[#080A0D]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
         
         {/* Section Title Header */}
         <div className="mb-16">
