@@ -83,6 +83,18 @@ export const Contact = () => {
               </div>
 
               <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <span className="text-mutedText uppercase tracking-wider">WhatsApp</span>
+                <a
+                  href="https://wa.me/22967411124"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accentBlue hover:underline transition-colors flex items-center gap-1.5"
+                >
+                  <span>+229 67 41 11 24</span>
+                </a>
+              </div>
+
+              <div className="flex items-center justify-between py-2 border-b border-white/5">
                 <span className="text-mutedText uppercase tracking-wider">
                   {language === 'fr' ? 'Localisation' : 'Location'}
                 </span>
