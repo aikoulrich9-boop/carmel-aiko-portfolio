@@ -3,10 +3,18 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Film, Sliders, Sparkles, Monitor, Volume2, 
-  Scissors, Zap, Compass, Palette, Headphones, CheckCircle2, Globe
+  Scissors, Zap, Compass, Palette, Headphones, CheckCircle2, Globe,
+  Camera, Disc, Plane, HeartHandshake
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { softwareSkills, coreMastery, services, languageSkills } from '../data/skills';
+import { 
+  softwareSkills, 
+  coreMastery, 
+  services, 
+  languageSkills, 
+  personalSkills, 
+  hobbies 
+} from '../data/skills';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +26,16 @@ const getServiceIcon = (iconName) => {
     case 'palette': return <Palette className="w-5 h-5" />;
     case 'headphones': return <Headphones className="w-5 h-5" />;
     default: return <CheckCircle2 className="w-5 h-5" />;
+  }
+};
+
+const getHobbyIcon = (iconName) => {
+  switch (iconName) {
+    case 'camera': return <Camera className="w-5 h-5" />;
+    case 'film': return <Film className="w-5 h-5" />;
+    case 'disc': return <Disc className="w-5 h-5" />;
+    case 'plane': return <Plane className="w-5 h-5" />;
+    default: return <Compass className="w-5 h-5" />;
   }
 };
 
@@ -46,11 +64,11 @@ export const Skills = () => {
       // Animate SVG circular progress
       gsap.fromTo(
         '.circle-progress',
-        { strokeDashoffset: 283 },
+        { strokeDashoffset: 176 },
         {
           strokeDashoffset: (i, target) => {
             const pct = parseInt(target.dataset.percentage, 10);
-            return 283 - (283 * pct) / 100;
+            return 176 - (176 * pct) / 100;
           },
           duration: 1.5,
           ease: 'power3.out',
@@ -189,7 +207,7 @@ export const Skills = () => {
                           strokeWidth="4"
                           fill="transparent"
                         />
-                        {/* Animated meter circle (r=28 -> circumference ~ 175.9, using 283 standard scale) */}
+                        {/* Animated meter circle */}
                         <circle
                           className="circle-progress"
                           cx="32"
@@ -231,7 +249,66 @@ export const Skills = () => {
           </div>
         </div>
 
-        {/* 3. Audiovisual Services & Production Value (Inspired by Image 2 "Services") */}
+        {/* 3. Personal Strengths & Hobbies (Directly Inspired by Image 1) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+          {/* Methodological & Personal Strengths (7 cols) */}
+          <div className="lg:col-span-7 p-8 rounded-[2.5rem] bg-charcoal-900 border border-white/10 shadow-xl flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono text-gold uppercase tracking-wider mb-2">
+                <HeartHandshake className="w-4 h-4" />
+                <span>MÉTHODOLOGIE DE TRAVAIL</span>
+              </div>
+              <h3 className="text-xl font-sans font-bold text-cream mb-4">
+                {t.skills.personalSkillsTitle}
+              </h3>
+              <p className="text-xs sm:text-sm text-slateText leading-relaxed mb-6">
+                Le montage est autant une discipline d'écoute humaine et de gestion de projet qu'un acte artistique.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2.5">
+              {personalSkills.map((ps, pIdx) => (
+                <div
+                  key={pIdx}
+                  className="px-4 py-2 rounded-xl bg-charcoal-800 border border-white/5 text-xs font-medium text-cream flex items-center gap-2 hover:border-gold/30 transition-colors"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span>{ps[language]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Hobbies & Creative Universe (5 cols, Image 1 style circular icons) */}
+          <div className="lg:col-span-5 p-8 rounded-[2.5rem] bg-charcoal-900 border border-white/10 shadow-xl flex flex-col justify-between">
+            <div>
+              <span className="block text-xs font-mono text-cinema-cyan uppercase tracking-wider mb-2">
+                INSPIRATIONS & UNIVERS
+              </span>
+              <h3 className="text-xl font-sans font-bold text-cream mb-4">
+                {t.skills.hobbiesTitle}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {hobbies.map((hb, hIdx) => (
+                <div
+                  key={hIdx}
+                  className="p-3.5 rounded-2xl bg-charcoal-850/80 border border-white/5 flex flex-col items-center text-center group hover:border-cinema-cyan/40 transition-colors"
+                >
+                  <div className="w-11 h-11 rounded-full bg-charcoal-800 text-gold group-hover:text-cinema-cyan flex items-center justify-center border border-white/10 mb-2 shadow-sm transition-colors">
+                    {getHobbyIcon(hb.icon)}
+                  </div>
+                  <span className="text-xs font-sans font-semibold text-cream">
+                    {hb.title[language]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Audiovisual Services & Production Value (Inspired by Image 2 "Services") */}
         <div>
           <div className="text-center mb-10">
             <h3 className="text-2xl font-sans font-bold text-cream">
@@ -265,4 +342,3 @@ export const Skills = () => {
     </section>
   );
 };
-

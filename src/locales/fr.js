@@ -60,6 +60,8 @@ export const fr = {
     masteryTitle: 'Piliers de Compétences',
     servicesTitle: 'Ce Que Je Peux Apporter À Votre Film',
     languagesTitle: 'Langues de Travail',
+    personalSkillsTitle: 'Posture & Qualités Méthodologiques',
+    hobbiesTitle: 'Univers Créatif & Inspirations',
   },
   contact: {
     sectionTag: '— Collaboration & Booking',

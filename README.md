@@ -94,3 +94,4 @@ Le fichier `vercel.json` est déjà configuré à la racine avec :
 ---
 
 © 2026 Carmel Ulrich AIKO. Tous droits réservés.
+

@@ -60,6 +60,8 @@ export const en = {
     masteryTitle: 'Core Pillars of Mastery',
     servicesTitle: 'What I Bring to Your Production',
     languagesTitle: 'Working Languages',
+    personalSkillsTitle: 'Methodological & Personal Strengths',
+    hobbiesTitle: 'Creative Universe & Inspirations',
   },
   contact: {
     sectionTag: '— Collaboration & Inquiries',
