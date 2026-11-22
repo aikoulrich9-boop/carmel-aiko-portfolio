@@ -59,17 +59,12 @@ export const VideoModal = ({ project, onClose }) => {
                 />
               )
             ) : (
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full bg-[#080A0D] flex items-center justify-center">
                 <img
                   src={project.thumbnail}
                   alt={project.title[language]}
-                  className="w-full h-full object-cover opacity-80"
+                  className="w-full h-full object-contain"
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <div className="w-14 h-14 rounded-full border border-white/30 bg-[#080A0D]/80 flex items-center justify-center text-white">
-                    <Play className="w-5 h-5 ml-0.5 fill-current text-accentBlue" />
-                  </div>
-                </div>
               </div>
             )}
           </div>

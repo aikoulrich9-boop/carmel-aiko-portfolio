@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Play } from 'lucide-react';
+import { Play, Maximize2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { projects, projectCategories } from '../data/projects';
 
@@ -102,10 +102,14 @@ export const Portfolio = ({ onSelectProject }) => {
                     loading="lazy"
                   />
 
-                  {/* Dark hover tint with play icon */}
+                  {/* Dark hover tint with play icon (for video) or maximize icon (for photo) */}
                   <div className="absolute inset-0 bg-[#080A0D]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full border border-white/30 bg-[#080A0D]/80 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300">
-                      <Play className="w-4 h-4 ml-0.5 fill-current text-accentBlue" />
+                      {project.videoUrl ? (
+                        <Play className="w-4 h-4 ml-0.5 fill-current text-accentBlue" />
+                      ) : (
+                        <Maximize2 className="w-4 h-4 text-accentBlue" />
+                      )}
                     </div>
                   </div>
 

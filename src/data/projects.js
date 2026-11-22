@@ -98,7 +98,8 @@ export const projects = [
     client: 'FESPACO & Festivals Internationaux',
     year: 2018,
     thumbnail: '/images/film-incompris-fespaco.jpg',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: null,
+    mediaType: 'image',
     description: {
       fr: "Assistant monteur sur le film « INCOMPRIS » du réalisateur Jaurès Kokpémèdji, couronné du 1er Prix de la Compétition Films des Écoles Africaines au FESPACO 50e édition. Dérushage, organisation des timelines et pré-montage des séquences de fiction.",
       en: "Assistant editor on the film 'INCOMPRIS' directed by Jaurès Kokpémèdji, awarded 1st Prize in the African Film Schools Competition at the 50th FESPACO edition. Rushes logging, timeline structure, and narrative pre-editing.",
@@ -108,7 +109,7 @@ export const projects = [
       en: 'Assistant Editor',
     },
     published: true,
-    duration: 'Format Fiction / FESPACO',
+    duration: 'Palmarès FESPACO',
     aspectRatio: '16:9 / 2.39:1',
     tags: ['FESPACO', 'Cinéma', 'Fiction', 'Assistant Monteur', 'Bénin'],
   },
