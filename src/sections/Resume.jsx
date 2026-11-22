@@ -80,8 +80,9 @@ export const Resume = () => {
           
           {/* ======================================================== */}
           {/* COLUMN 1: SKILLS (Software Skills, Languages, Personal) */}
+          {/* Mobile Order 2 / Desktop Order 1 (Left Column)           */}
           {/* ======================================================== */}
-          <div className="resume-col lg:col-span-4 space-y-12">
+          <div className="resume-col order-2 lg:order-1 lg:col-span-4 space-y-12">
             
             {/* SOFTWARE SKILLS */}
             <div>
@@ -165,8 +166,9 @@ export const Resume = () => {
 
           {/* ======================================================== */}
           {/* COLUMN 2: EXPERIENCE & EDUCATION (Timeline)              */}
+          {/* Mobile Order 1 / Desktop Order 2 (Center Column)         */}
           {/* ======================================================== */}
-          <div className="resume-col lg:col-span-5 space-y-12">
+          <div className="resume-col order-1 lg:order-2 lg:col-span-5 space-y-12">
             
             {/* EXPERIENCE TIMELINE */}
             <div>
@@ -248,8 +250,9 @@ export const Resume = () => {
 
           {/* ======================================================== */}
           {/* COLUMN 3: EXPERTISE, IA & CENTRES D'INTÉRÊT              */}
+          {/* Mobile Order 3 / Desktop Order 3 (Right Column)          */}
           {/* ======================================================== */}
-          <div className="resume-col lg:col-span-3 space-y-12">
+          <div className="resume-col order-3 lg:order-3 lg:col-span-3 space-y-12">
             
             {/* DOMAINES D'ACTION / WHAT CAN I DO ? */}
             <div>

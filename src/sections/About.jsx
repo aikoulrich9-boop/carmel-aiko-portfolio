@@ -53,13 +53,24 @@ export const About = () => {
               </h2>
 
               {/* Email underneath heading (as in Screenshot 2) */}
-              <div className="about-reveal mb-8">
+              <div className="about-reveal mb-6 lg:mb-8">
                 <a
                   href={`mailto:${biography.contact.email}`}
                   className="font-mono text-xs sm:text-sm text-accentBlue hover:underline transition-all tracking-wider"
                 >
                   {biography.contact.email}
                 </a>
+              </div>
+
+              {/* Mobile Portrait: Placed directly between Email and Description on Mobile */}
+              <div className="about-reveal block lg:hidden my-6 w-full max-w-xs sm:max-w-sm mx-auto overflow-hidden rounded-2xl border border-white/10 shadow-2xl relative aspect-[4/5]">
+                <img
+                  src="/images/carmel-aiko-portrait.jpg"
+                  alt="Carmel Ulrich AIKO — Monteur Vidéo & Chef Monteur"
+                  className="w-full h-full object-cover object-top contrast-110"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D]/80 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Biography Paragraphs */}
@@ -93,8 +104,8 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Right Column: Large Photographic Portrait (Seamlessly Blended) */}
-          <div className="lg:col-span-6 xl:col-span-5 relative flex justify-center lg:justify-end">
+          {/* Right Column: Large Photographic Portrait (Seamlessly Blended) - Desktop Only */}
+          <div className="hidden lg:flex lg:col-span-6 xl:col-span-5 relative justify-center lg:justify-end">
             <div className="relative w-full max-w-md lg:max-w-none h-[480px] sm:h-[580px] lg:h-[640px] overflow-hidden">
               {/* Carmel Ulrich AIKO Portrait */}
               <img
