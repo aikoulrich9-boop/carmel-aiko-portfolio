@@ -32,18 +32,17 @@ export const Hero = ({ onOpenCvModal }) => {
       id="home"
       className="relative w-full h-[100dvh] min-h-[640px] flex items-center bg-[#080A0D] overflow-hidden select-none"
     >
-      {/* Photographic Cinematic Background */}
+      {/* Photographic Cinematic Background with 50% opacity */}
       <div
-        className="absolute inset-0 bg-cover bg-center md:bg-right bg-no-repeat pointer-events-none transition-transform duration-1000 scale-100"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-50 transition-opacity duration-700"
         style={{
           backgroundImage: `url('/images/carmel-aiko-hero.jpg')`,
         }}
       />
 
-      {/* Dark Cinematic Vignette & Gradient Overlays (preserving dark left side for text) */}
-      <div className="absolute inset-0 bg-[#080A0D]/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#080A0D] via-[#080A0D]/80 to-transparent w-full md:w-2/3 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D] via-transparent to-[#080A0D]/60 pointer-events-none" />
+      {/* Dark Cinematic Vignette & Gradient Overlays (preserving contrast for text) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080A0D] via-[#080A0D]/75 to-transparent w-full md:w-3/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#080A0D] via-transparent to-[#080A0D]/40 pointer-events-none" />
 
       {/* Main Content (Left Aligned as in Screenshot 1) */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-between h-full py-28 md:py-32">
